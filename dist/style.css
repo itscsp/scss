@@ -1,0 +1,102 @@
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+/*
+Using responsive font size
+
+--> we may use @media query but it get more completed
+--> we may use view width (vw) but it also get more larger if view width more bigger
+--> ideal way to write resposive font size
+    --> use vw + px
+    --> use clamp() function
+    --> clamp() it take minimun 3 arguments 1st minimun value, 2nd value that can can dynamic, 3rd value maximum value
+    --> example font-size: clamp(28px, 16px + 2vw, 48px);
+
+--> REM v/s EM
+    REM: root EM getting from browser font size        | EM : getting from parent element font size
+
+
+*/
+h1 {
+  font-size: clamp(1.75rem, 1rem + 2vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.375rem, 0.875rem + 1.5vw, 2.25rem);
+}
+
+p {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+:root {
+  --background-color:hsl(0, 0%, 13%);
+  --text-color: hsl(0, 0%, 100%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 2.5rem;
+  width: min(100% - 1.25rem, 120rem);
+  margin-inline: auto;
+}
+@media (min-width: 56.25em) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+.grid__main, .grid__sidebar {
+  padding: 2.5rem;
+}
+.grid__main {
+  background-color: rgb(2, 2, 124);
+}
+.grid__sidebar {
+  text-align: start;
+}
+@media (max-width: 43.74875em) {
+  .grid__sidebar {
+    text-align: center;
+  }
+}
+.grid__widget, .grid__widget--green {
+  background-color: hsl(300deg, 100%, 32%);
+  padding: 1px;
+}
+.grid__widget--green {
+  background-color: hsl(120deg, 100%, 18%);
+}/*# sourceMappingURL=style.css.map */

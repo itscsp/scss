@@ -1,0 +1,25 @@
+@use 'sass:math';
+
+// font-size: rem(30)
+@function rem($pixel) {
+    //divide pixel by 16 return rems
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + rem;
+    }
+
+    @else {
+        @error  'Don\'t use unit when using the rem function; only number';
+    }
+}
+
+// font-size: em(30)
+@function em($pixel) {
+    //divide pixel by 16 return rems
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + em;
+    }
+
+    @else {
+        @error  'Don\'t use unit when using the em function; only number';
+    }
+}

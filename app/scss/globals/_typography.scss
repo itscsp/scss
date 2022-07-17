@@ -1,0 +1,53 @@
+@use '../util' as u;
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 0;
+}
+
+/*
+Using responsive font size
+
+--> we may use @media query but it get more completed
+--> we may use view width (vw) but it also get more larger if view width more bigger
+--> ideal way to write resposive font size
+    --> use vw + px
+    --> use clamp() function
+    --> clamp() it take minimun 3 arguments 1st minimun value, 2nd value that can can dynamic, 3rd value maximum value
+    --> example font-size: clamp(28px, 16px + 2vw, 48px);
+
+--> REM v/s EM
+    REM: root EM getting from browser font size        | EM : getting from parent element font size
+
+
+*/
+
+h1{
+    font-size: clamp(u.rem(28), u.rem(16) + 2vw, u.rem(48));
+
+    // @include u.breakpoint(medium) {
+    //     font-size: 42px;
+    // }
+
+    // @include u.breakpoint(large) {
+    //     font-size: 48px;
+    // }
+}
+
+h2{
+    font-size: clamp(u.rem(22), u.rem(14) + 1.5vw, u.rem(36));
+}
+
+p {
+    margin-top: 0;
+    font-size: u.rem(16);
+}
+
+a,
+a:visited,
+a:active {
+    text-decoration: none;
+}
